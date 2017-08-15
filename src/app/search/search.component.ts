@@ -22,7 +22,7 @@ export class SearchComponent {
     search() {
         let headers = new Headers();
         let options = new RequestOptions({ headers: headers });
-        this.endpoint = environment.endpoint + '/api/search?id=' + this.id + '&timestamp='+ this.timestamp;
+        this.endpoint = environment.endpoint + 'api/search?id=' + this.id + '&timestamp='+ this.timestamp;
         this.http.get(`${this.endpoint}`, options)
             .map(res => res.json())
             .catch(error => Observable.throw(error))

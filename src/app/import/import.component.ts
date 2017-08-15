@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class ImportComponent {
-    private apiEndPoint = environment.endpoint + '/api/upload';
+    private apiEndPoint = environment.endpoint + 'api/upload';
     file:File;
 
     constructor(private http:Http) { }
