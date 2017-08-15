@@ -13,8 +13,9 @@ import { environment } from '../../environments/environment';
 })
 
 export class ImportComponent {
-    private apiEndPoint = environment.endpoint + 'api/upload';
     file:File;
+    alerts:String[] = [];
+    private apiEndPoint = environment.endpoint + 'api/upload';
 
     constructor(private http:Http) { }
 
@@ -37,8 +38,8 @@ export class ImportComponent {
             .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
-                data => console.log('success'),
-                error => console.log('Error occurred', error)
+                (data) => { console.log('Success', data) } ,
+                (error) => { console.log('Error occurred', error) }
             );
     }
 
