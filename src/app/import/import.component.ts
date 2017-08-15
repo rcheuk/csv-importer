@@ -4,6 +4,7 @@ import { Http, Headers, Request, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/Rx'
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'import-cmp',
@@ -12,7 +13,7 @@ import 'rxjs/Rx'
 })
 
 export class ImportComponent {
-    private apiEndPoint = 'http://localhost:5000/api/upload';
+    private apiEndPoint = environment.endpoint + '/api/upload';
     file:File;
 
     constructor(private http:Http) { }
