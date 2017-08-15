@@ -4,14 +4,15 @@
             <!--empty-->
         </div>
         <div class="col-6">
-            <div class="my-2 p-3">
+            <div class="jumbotron my-2 p-3">
+                <h5>Enter an ID and/or timestamp value to search.</h5>
                 <div class="form-group">
                     <label class="form-control-label" for="id">ID:</label>
-                    <input type="number" min="0" class="form-control" id="id" [(ngModel)]="id" placeholder="Enter a number">
+                    <input type="number" min="0" class="form-control" id="id" [(ngModel)]="id" (blur)="search()" placeholder="Enter a number">
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="time">Timestamp:</label>
-                    <input type="text" class="form-control" id="time" [(ngModel)]="timestamp" placeholder="Enter a timestamp">
+                    <input type="text" class="form-control" id="time" [(ngModel)]="timestamp" (blur)="search()" placeholder="Enter a timestamp in epoch format">
                 </div>
                 <button type="submit" (click)="search()" class="btn btn-primary pull-right">Search</button>
             </div>
@@ -25,8 +26,8 @@
         </div>
         <div class="col-8">
             <div class="container">
-                <table class="table">
-                <thead>
+                <table class="table table-sm table-border table-striped table-hover">
+                <thead class="thead-inverse"> 
                     <tr>
                     <th>ID</th>
                     <th>Object Type</th>
@@ -39,8 +40,8 @@
                     <tr>
                     <th scope="row">{{row.object_id}}</th>
                     <td>{{row.object_type}}</td>
-                    <td>{{row.timestamp | date: 'dd/MM/yyyy HH:mm'}}</td>
-                    <td>{{row.object_changes}}</td>
+                    <td>{{row.timestamp | date: 'medium'}}</td>
+                    <td><span [innerHTML]="row.object_changes | jsonTransform"></span></td>
                     </tr>
                     </ng-container>
                 </tbody>

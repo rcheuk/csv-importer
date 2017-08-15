@@ -6,6 +6,8 @@ import {DatePipe} from '@angular/common';
 import { environment }  from '../../environments/environment';
 import 'rxjs/Rx'
 
+import { JsonTransform } from './JsonTransform.pipe';
+
 @Component({
     selector: 'search-cmp',
     templateUrl: './search.component.html',
@@ -37,7 +39,10 @@ export class SearchComponent {
             .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
-                data => {this.results = data.results; console.log('data', data);},
+                data => {
+                    this.results = data.results; 
+                    console.log('data', data);
+                },
                 error => console.log('Error occurred', error)
             );
     }

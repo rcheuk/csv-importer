@@ -15,6 +15,10 @@ import { RoutingModule } from './common/routing/routing.module';
 import { ImportRoutingModule } from './import/import.routing.module';
 import { SearchRoutingModule } from './search/search.routing.module';
 
+import { AlertModule } from 'ngx-bootstrap';
+
+import { JsonTransform } from './search/JsonTransform.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +27,7 @@ import { SearchRoutingModule } from './search/search.routing.module';
     NavbarComponent,
     ImportComponent,
     SearchComponent,
+    JsonTransform,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +36,7 @@ import { SearchRoutingModule } from './search/search.routing.module';
     ImportRoutingModule,
     SearchRoutingModule,
     RoutingModule,
+    AlertModule.forRoot(),
   ],
   bootstrap: [
     AppComponent

@@ -14,14 +14,13 @@ import { environment } from '../../environments/environment';
 
 export class ImportComponent {
     file:File;
-    alerts:String[] = [];
+    alerts:any[] = [];
     private apiEndPoint = environment.endpoint + 'api/upload';
 
     constructor(private http:Http) { }
 
     fileChange(event) {
         let fileList: FileList = event.target.files;
-        console.log("files", fileList);
         if(fileList.length > 0) {
             this.file = fileList[0];
         }
@@ -35,11 +34,15 @@ export class ImportComponent {
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
         this.http.post(`${this.apiEndPoint}`, formData, options)
-            .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
-                (data) => { console.log('Success', data) } ,
-                (error) => { console.log('Error occurred', error) }
+                (data) => { 
+                    this.alerts.push({ type: 'success', msg: 'SUCCESS! Your file has been successfully imported.', timeout: 5000 });
+                },
+                (error) => { 
+                    console.log('Error occurred', error);
+                    this.alerts.push({ type: 'danger', msg: 'ERROR! There was an error in uploading your file. Please try again later.', timeout: 5000 });
+                }
             );
     }
 

@@ -5,10 +5,17 @@
         </div>
         <div class="col-6">
             <div class="p-3 my-2">
-                <form enctype="multipart/form-data">
-                    <input type="file" (change)="fileChange($event)" name="file" placeholder="Upload file" accept=".csv">
-                    <button type="button" (click)="upload()">Upload</button>
-                </form>
+                <div *ngFor="let alert of alerts">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">
+                        {{alert.msg}}
+                    </alert>
+                </div>
+                <div class="well">
+                    <form enctype="multipart/form-data">
+                        <input type="file" (change)="fileChange($event)" name="file" placeholder="Upload file" accept=".csv">
+                        <button type="button" (click)="upload()">Upload</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col">
