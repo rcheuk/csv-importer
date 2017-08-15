@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <!--empty-->
+        </div>
+        <div class="col-6">
+            <div class="my-2 p-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="id">ID:</label>
+                    <input type="number" min="0" class="form-control" id="id" [(ngModel)]="id" placeholder="Enter a number">
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="time">Timestamp:</label>
+                    <input type="text" class="form-control" id="time" [(ngModel)]="timestamp" placeholder="Enter a timestamp">
+                </div>
+                <button type="submit" (click)="search()" class="btn btn-primary pull-right">Search</button>
+            </div>
+        </div>
+        <div class="col">
+            <!--empty-->
+        </div>
+    </div>
+    <div class="row" *ngIf="results">
+        <div class="col">
+        </div>
+        <div class="col-8">
+            <div class="container">
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Object Type</th>
+                    <th>Time</th>
+                    <th>Changes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let row of results">
+                    <tr>
+                    <th scope="row">{{row.object_id}}</th>
+                    <td>{{row.object_type}}</td>
+                    <td>{{row.timestamp | date: 'dd/MM/yyyy HH:mm'}}</td>
+                    <td>{{row.object_changes}}</td>
+                    </tr>
+                    </ng-container>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>

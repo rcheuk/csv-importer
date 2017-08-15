@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <!--empty-->
+        </div>
+        <div class="col-6">
+            <div class="p-3 my-2">
+                <form enctype="multipart/form-data">
+                    <input type="file" (change)="fileChange($event)" name="file" placeholder="Upload file" accept=".csv">
+                    <button type="button" (click)="upload()">Upload</button>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <!--empty-->
+        </div>
+    </div>
+</div>
