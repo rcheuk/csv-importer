@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {DatePipe} from '@angular/common';
-
+import { environment }  from '../../environments/environment';
 import 'rxjs/Rx'
 
 @Component({
@@ -22,7 +22,7 @@ export class SearchComponent {
     search() {
         let headers = new Headers();
         let options = new RequestOptions({ headers: headers });
-        this.endpoint = 'http://localhost:5000/api/search?id=' + this.id + '&timestamp='+ this.timestamp;
+        this.endpoint = environment + '/api/search?id=' + this.id + '&timestamp='+ this.timestamp;
         this.http.get(`${this.endpoint}`, options)
             .map(res => res.json())
             .catch(error => Observable.throw(error))
