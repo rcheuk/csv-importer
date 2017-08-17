@@ -2,7 +2,7 @@ import { SearchComponent } from './search.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }                        from '@angular/platform-browser';
 
-import { FormsModule } from ''
+import { FormsModule } from '@angular/forms';
 
 let fixture: ComponentFixture<SearchComponent>;
 
